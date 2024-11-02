@@ -113,5 +113,5 @@ app.get("/status/:id", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://bgremove-be-production.up.railway.app:${port}`);
 });
