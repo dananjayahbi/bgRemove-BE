@@ -76,6 +76,10 @@ def start_clear_folder_thread():
 # Start the folder clearing thread when the app starts
 start_clear_folder_thread()
 
+@app.route('/')
+def home():
+    return "Hello, World!"
+
 # Route to serve processed images
 @app.route('/outputs/<session_id>/<filename>')
 def uploaded_file(session_id, filename):
