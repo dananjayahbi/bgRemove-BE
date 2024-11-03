@@ -22,7 +22,7 @@ db = client.get_database('bgremove')
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-CORS(app)  # Apply CORS to your Flask app
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # User collection in MongoDB
 users_collection = db.users
