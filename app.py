@@ -82,6 +82,10 @@ def uploaded_file(session_id, filename):
     directory = f"assets/Outputs/{session_id}"
     return send_from_directory(directory, filename)
 
+@app.route('/')
+def home():
+    return "Hello, World!"
+
 #user routes
 # get all users
 @app.route('/users', methods=['GET'])
