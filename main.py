@@ -22,7 +22,7 @@ db = client.get_database('bgremove')
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/*": {"origins": "https://imageforward.x10.mx"}})
 
 # User collection in MongoDB
 users_collection = db.users
