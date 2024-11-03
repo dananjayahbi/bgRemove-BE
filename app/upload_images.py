@@ -1,7 +1,9 @@
-# app/upload_images.py
-
 from flask import Blueprint, request, jsonify
 from app.background_remover import handle_uploads
+from flask_cors import CORS
+
+# Allow all origins to access the /upload route
+CORS(allow_headers='Content-Type', resources={r"/upload": {"origins": "*"}})
 
 upload_images_bp = Blueprint('upload_images', __name__)
 
