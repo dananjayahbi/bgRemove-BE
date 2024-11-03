@@ -1,5 +1,7 @@
+# app.py
+
 from flask import Flask, send_from_directory, jsonify, request, session
-from flask_cors import CORS
+from flask_cors import CORS  # Import CORS from flask_cors
 from app.upload_images import upload_images_bp
 from app.background_remover import ensure_directories
 from pymongo import MongoClient
@@ -20,7 +22,7 @@ db = client.get_database('bgremove')
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-CORS(app, resources={r"/*": {"origins": ["https://imageforward.x10.mx", "http://localhost:5173", "http://imageforward.x10.mx"]}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # User collection in MongoDB
 users_collection = db.users
@@ -73,10 +75,6 @@ def start_clear_folder_thread():
 
 # Start the folder clearing thread when the app starts
 start_clear_folder_thread()
-
-@app.route('/')
-def home():
-    return "Hello, World!"
 
 # Route to serve processed images
 @app.route('/outputs/<session_id>/<filename>')
