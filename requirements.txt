@@ -1,0 +1,8 @@
+Flask
+Flask-PyMongo
+rembg
+flask-cors
+pymongo
+bcrypt
+python-dotenv
+gunicorn==20.0.4
