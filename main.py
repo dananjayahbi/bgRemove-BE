@@ -22,7 +22,7 @@ db = client.get_database('bgremove')
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
-CORS(app, resources={r"/*": {"origins": "https://imageforward.x10.mx"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # User collection in MongoDB
 users_collection = db.users
@@ -38,6 +38,12 @@ def initialize():
 @app.before_request
 def before_request():
     initialize()
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    return response
 
 # Function to clear contents of Uploads and Outputs folders
 def clear_folders():
